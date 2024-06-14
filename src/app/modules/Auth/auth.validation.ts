@@ -15,7 +15,7 @@ const userCreateValidation = z.object({
       .string()
       .min(8, { message: 'Password length must be at least 8 characters' })
       .refine((value) => value !== '', { message: 'Password is required' }),
-    phone: z.string({ required_error: 'Phone is required' }).min(11),
+    phone: z.string({ required_error: 'Phone is required' }).min(11).max(11),
     address: z.string({ required_error: 'Address is required' }),
     role: z.enum(['admin', 'user'], { message: 'Role is required' }),
   }),
