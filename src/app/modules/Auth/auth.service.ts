@@ -30,9 +30,12 @@ const loginUserFromDB = async (payload: ILoginUser) => {
     throw new AppError(httpStatus.FORBIDDEN, 'Password do not matched');
   }
 
+  // console.log('userid', user._id);
+
   const jwtPayload = {
     email: user.email,
     role: user.role,
+    userId: user._id,
   };
 
   const accessToken = createToken(

@@ -12,13 +12,13 @@ const auth = (...requiredRoles: IUserRole[]) => {
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      throw new AppError(httpStatus.UNAUTHORIZED, 'You are not authorized!');
+      throw new AppError(httpStatus.UNAUTHORIZED, 'You are not authorized');
     }
 
     const token = authHeader.split(' ')[1];
 
     if (!token) {
-      throw new AppError(httpStatus.UNAUTHORIZED, 'You are not authorized!');
+      throw new AppError(httpStatus.UNAUTHORIZED, 'You are not authorized');
     }
 
     const decoded = jwt.verify(
@@ -31,15 +31,14 @@ const auth = (...requiredRoles: IUserRole[]) => {
     const user = await User.isUserExistsByEmail(email);
 
     if (!user) {
-      throw new AppError(httpStatus.NOT_FOUND, 'This user is not found !');
+      throw new AppError(httpStatus.NOT_FOUND, 'This user is not found');
     }
 
     if (requiredRoles && !requiredRoles.includes(role)) {
-      throw new AppError(
-        httpStatus.UNAUTHORIZED,
-        'You are not authorized  hi!',
-      );
+      throw new AppError(httpStatus.UNAUTHORIZED, 'You are not authorized');
     }
+
+    console.log('dec', decoded);
 
     req.user = decoded as JwtPayload;
     next();
