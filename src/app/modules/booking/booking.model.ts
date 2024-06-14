@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import { BookingModel, IBooking } from './bookin.interface';
+import { IBooking } from './bookin.interface';
 
 const bookingSchema = new Schema<IBooking>({
   userId: {
@@ -30,6 +30,6 @@ const bookingSchema = new Schema<IBooking>({
   },
 });
 
-const Booking = model<IBooking, BookingModel>('Booking', bookingSchema);
+const Booking = model<IBooking>('Booking', bookingSchema);
 
 export default Booking;

@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import { Model, Types } from 'mongoose';
+import { Types } from 'mongoose';
 
 export interface IBooking {
   userId: Types.ObjectId;
@@ -13,8 +12,4 @@ export interface IBooking {
 export interface IBookingRental {
   bikeId: Types.ObjectId;
   startTime: Date;
-}
-
-export interface BookingModel extends Model<IBooking> {
-  isAvailableForRent(id: string): Promise<boolean>;
 }
