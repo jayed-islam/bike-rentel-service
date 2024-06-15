@@ -3,6 +3,7 @@ import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import { AuthService } from './auth.service';
 
+// user registration controller
 const registerUser = catchAsync(async (req, res) => {
   const result = await AuthService.registerUserIntoDB(req.body);
 
@@ -14,6 +15,7 @@ const registerUser = catchAsync(async (req, res) => {
   });
 });
 
+// user login service
 const loginUser = catchAsync(async (req, res) => {
   const { accessToken, result } = await AuthService.loginUserFromDB(req.body);
 

@@ -7,6 +7,7 @@ import config from '../config';
 import { User } from '../modules/user/user.model';
 import { IUserRole } from '../modules/user/user.interface';
 
+// authenticate and authorization middleware
 const auth = (...requiredRoles: IUserRole[]) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization;

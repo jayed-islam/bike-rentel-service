@@ -7,6 +7,7 @@ import { ILoginUser } from './auth.interface';
 import { IUser } from '../user/user.interface';
 import { createToken } from './auth.utils';
 
+// user registration service
 const registerUserIntoDB = async (payload: IUser) => {
   const user = await User.isUserExistsByEmail(payload.email);
 
@@ -15,10 +16,13 @@ const registerUserIntoDB = async (payload: IUser) => {
   }
 
   const result = await User.create(payload);
+  // const userWithoutPassword = result.toObject()
+  // delete userWithoutPassword.password
 
   return result;
 };
 
+// user login service
 const loginUserFromDB = async (payload: ILoginUser) => {
   const user = await User.isUserExistsByEmail(payload.email);
 

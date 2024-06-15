@@ -5,6 +5,7 @@ import Bike from '../bike/bike.model';
 import AppError from '../../errors/AppError';
 import httpStatus from 'http-status';
 
+// create rentals service
 const createBookingRentalInToDB = async (
   userId: Types.ObjectId,
   payload: IBookingRental,
@@ -65,6 +66,7 @@ const createBookingRentalInToDB = async (
   }
 };
 
+// make rentals return service
 const makeReturnBikeInToDB = async (bookingId: string) => {
   const session = await mongoose.startSession();
 
@@ -117,6 +119,7 @@ const makeReturnBikeInToDB = async (bookingId: string) => {
   }
 };
 
+// get all rentals for user (my rentals) service
 const getAllRentalsForUserFromDB = async (userId: string) => {
   const result = await Booking.find({ userId }).select('-__v');
 

@@ -6,6 +6,7 @@ import auth from '../../middlewares/auth';
 import { USER_ROLE } from '../user/user.constants';
 const router = express.Router();
 
+// create bike
 router.post(
   '/',
   auth(USER_ROLE.admin),
@@ -13,8 +14,10 @@ router.post(
   BikeController.createBike,
 );
 
+// get all bike
 router.get('/', BikeController.getAllBike);
 
+// update single bike
 router.put(
   '/:id',
   auth(USER_ROLE.admin),
@@ -22,6 +25,7 @@ router.put(
   BikeController.updateSingleBike,
 );
 
+// delete single bike
 router.delete('/:id', auth(USER_ROLE.admin), BikeController.deleteSingleBike);
 
 export const BikeRoutes = router;

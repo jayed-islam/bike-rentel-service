@@ -3,6 +3,7 @@ import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import { UserService } from './user.service';
 
+// get user profile
 const getUserProfile = catchAsync(async (req, res) => {
   const result = await UserService.getUserProfileFromDB(req.user.email);
 
@@ -14,6 +15,7 @@ const getUserProfile = catchAsync(async (req, res) => {
   });
 });
 
+// update user profile
 const updateUserProfile = catchAsync(async (req, res) => {
   const result = await UserService.updateUserProfileData(
     req.user.email,

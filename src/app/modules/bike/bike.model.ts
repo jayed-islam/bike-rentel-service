@@ -44,6 +44,13 @@ bikeSchema.statics.isBikeExists = async function (
   return await this.findOne({ name, model, year });
 };
 
+bikeSchema.set('toJSON', {
+  transform: function (doc, ret) {
+    delete ret.__v;
+    return ret;
+  },
+});
+
 const Bike = model<IBike, BikeModel>('Bike', bikeSchema);
 
 export default Bike;

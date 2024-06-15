@@ -7,6 +7,7 @@ import { USER_ROLE } from '../user/user.constants';
 
 const router = express.Router();
 
+// create rental
 router.post(
   '/',
   auth(USER_ROLE.user, USER_ROLE.admin),
@@ -14,12 +15,14 @@ router.post(
   BookingRentalController.createBookinRental,
 );
 
+// make rental return by amdin
 router.put(
   '/:id/return',
   auth(USER_ROLE.admin),
   BookingRentalController.makeBikeReturn,
 );
 
+// get all rentals for user
 router.get(
   '/',
   auth(USER_ROLE.admin, USER_ROLE.user),

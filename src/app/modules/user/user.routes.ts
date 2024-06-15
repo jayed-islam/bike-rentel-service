@@ -7,8 +7,10 @@ import { UserValidation } from './user.validation';
 
 const router = express.Router();
 
+// get user profile
 router.get('/me', auth(USER_ROLE.user), UserControllers.getUserProfile);
 
+// update user profile
 router.put(
   '/me',
   auth(USER_ROLE.user),

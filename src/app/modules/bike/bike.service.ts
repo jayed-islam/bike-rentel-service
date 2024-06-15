@@ -3,6 +3,7 @@ import AppError from '../../errors/AppError';
 import { IBike } from './bike.interface';
 import Bike from './bike.model';
 
+// create bike service
 const createBikeInToDB = async (payload: IBike) => {
   const bike = await Bike.isBikeExists(
     payload.name,
@@ -19,11 +20,13 @@ const createBikeInToDB = async (payload: IBike) => {
   return result;
 };
 
+// get all bike service
 const getAllBikeFromDB = async () => {
   const result = await Bike.find().select('-__v');
   return result;
 };
 
+// update single bike
 const updateSingleBikeInToDB = async (id: string, playload: Partial<IBike>) => {
   const bike = await Bike.findById(id);
   if (!bike) {
@@ -38,6 +41,7 @@ const updateSingleBikeInToDB = async (id: string, playload: Partial<IBike>) => {
   return result;
 };
 
+// delete single bike
 const deleteSingleBikeFromDB = async (id: string) => {
   const bike = await Bike.findById(id);
   if (!bike) {
