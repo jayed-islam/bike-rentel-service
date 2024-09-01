@@ -136,7 +136,6 @@ const PaymentFailure = async (tnxId: string) => {
   const verifyResponse = await verifyPayment(tnxId);
 
   if (verifyResponse.pay_status !== 'Successful') {
-    console.log('Payment failed', tnxId);
     return htmlPaymentFailContent;
   }
 };
