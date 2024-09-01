@@ -43,7 +43,6 @@ const MakePayemnt = catchAsync(async (req, res) => {
     isFromUserPanel as string,
   );
 
-  console.log('ss', paymentSession);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,

@@ -57,8 +57,6 @@ const updateSingleBikeInToDB = async (id: string, playload: Partial<IBike>) => {
     throw new AppError(httpStatus.NOT_FOUND, 'Bike not found');
   }
 
-  console.log(id, playload);
-
   const result = await Bike.findOneAndUpdate({ _id: id }, playload, {
     new: true,
     runValidators: true,

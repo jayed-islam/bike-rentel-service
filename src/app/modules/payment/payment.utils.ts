@@ -33,7 +33,6 @@ export const initiatePayment = async (
     type: 'json',
   });
 
-  console.log(response);
   return response.data;
 };
 
@@ -47,6 +46,5 @@ export const verifyPayment = async (tnxId: string) => {
     },
   });
 
-  console.log(response);
   return response.data;
 };
